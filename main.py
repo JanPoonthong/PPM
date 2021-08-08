@@ -1,15 +1,14 @@
 def save_as_ppm(width, height, pixels: hex, file_name):
+    buffer = []
     with open(f"{file_name}.ppm", "w") as file:
         file.write(f"P3\n{width} {height} 255\n")
         for y in range(height):
             for x in range(width):
                 pixel = pixels[y * width + x]
-                color = (
-                    f"{pixel >> 8 * 2 & 0xFF} ",
-                    f"{pixel >> 8 * 1 & 0xFF} ",
-                    f"{pixel >> 8 * 0 & 0xFF}  ",
-                )
-                file.writelines(color)
+                buffer.append(f"{pixel >> 8 * 2 & 0xFF} ")
+                buffer.append(f"{pixel >> 8 * 1 & 0xFF} ")
+                buffer.append(f"{pixel >> 8 * 0 & 0xFF}  ")
+        file.writelines(buffer)
     print(f"Saved {file_name}.ppm")
 
 
