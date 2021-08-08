@@ -5,5 +5,5 @@ No dependencies. Output is done via [PPM images](http://netpbm.sourceforge.net/d
 # Quick Start
 
 ```console
-python3 main.py
+$ python3 main.py
 ```
