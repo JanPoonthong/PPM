@@ -16,6 +16,39 @@ def save_as_ppm(width, height, pixels: hex, file_name):
     print(f"Saved {file_name}.ppm")
 
 
+def hollow_circle(width, height, pixels, foreground, background):
+    r = width // 2
+    cx = width // 2
+    cy = height // 2
+    x = 0
+    y = r
+
+    while x <= y:
+        px = x + cx
+        py = y + cy
+        for b in range(height):
+            for a in range(width):
+                if a == px and b == py:
+                    dx = px
+                    dy = py
+                    pixels[dy * width + dx] = foreground
+                    pixels[dx * width + dy] = foreground
+
+                    pixels[(height - dy) * width + dx] = foreground
+                    pixels[dx * width + (height - dy)] = foreground
+
+                    pixels[dy * width + (width - dx)] = foreground
+                    pixels[(width - dx) * width + dy] = foreground
+
+                    pixels[(height - dy) * width + (width - dx)] = foreground
+                    pixels[(width - dx) * width + (height - dy)] = foreground
+        x += 1
+        if x * x + y * y > r * r:
+            y -= 1
+
+    save_as_ppm(width, height, pixels, "hollow")
+
+
 def circle(width, height, pixels, foreground, background):
     cx = width // 2
     cy = height // 2
@@ -91,11 +124,13 @@ def stripes_pattern(
 def main():
     width = 256
     height = 256
-    pixels = [bytes(0)] * width * height
+    COLOR = 0x000000
+    pixels = [COLOR] * width * height
     FOREGROUND = 0x634D84
     BACKGROUND = 0x000000
-    checker_pattern(pixels, width, height, 10, FOREGROUND, BACKGROUND)
-    stripes_pattern(pixels, width, height, 10, FOREGROUND, BACKGROUND)
+    hollow_circle(width, height, pixels, FOREGROUND, BACKGROUND)
+    checker_pattern(pixels, width, height, width // 16, FOREGROUND, BACKGROUND)
+    stripes_pattern(pixels, width, height, width // 16, FOREGROUND, BACKGROUND)
     wee_wee(width, height, pixels)
     wee_wee_with_head(width, height, pixels)
     four_dimensional(width, height, pixels)
