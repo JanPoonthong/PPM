@@ -16,7 +16,7 @@ def save_as_ppm(width, height, pixels: hex, file_name):
     print(f"Saved {file_name}.ppm")
 
 
-def hollow_circle(width, height, pixels, foreground, background):
+def hollow_circle(width, height, pixels, foreground):
     r = width // 2
     cx = width // 2
     cy = height // 2
@@ -124,17 +124,17 @@ def stripes_pattern(
 def main():
     width = 256
     height = 256
-    COLOR = 0x000000
-    pixels = [COLOR] * width * height
-    FOREGROUND = 0x634D84
-    BACKGROUND = 0x000000
-    hollow_circle(width, height, pixels, FOREGROUND, BACKGROUND)
-    checker_pattern(pixels, width, height, width // 16, FOREGROUND, BACKGROUND)
-    stripes_pattern(pixels, width, height, width // 16, FOREGROUND, BACKGROUND)
+    color = 0x000000
+    pixels = [color] * width * height
+    foreground = 0x634D84
+    background = 0x000000
+    hollow_circle(width, height, pixels, foreground)
+    checker_pattern(pixels, width, height, width // 16, foreground, background)
+    stripes_pattern(pixels, width, height, width // 16, foreground, background)
     wee_wee(width, height, pixels)
     wee_wee_with_head(width, height, pixels)
     four_dimensional(width, height, pixels)
-    circle(width, height, pixels, FOREGROUND, BACKGROUND)
+    circle(width, height, pixels, foreground, background)
 
 
 main()
