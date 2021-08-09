@@ -17,7 +17,7 @@ def save_as_ppm(width, height, pixels: hex, file_name):
 
 
 def hollow_circle(width, height, pixels, foreground):
-    r = width // 2
+    r = width // 4
     cx = width // 2
     cy = height // 2
     x = 0
@@ -52,7 +52,7 @@ def hollow_circle(width, height, pixels, foreground):
 def circle(width, height, pixels, foreground, background):
     cx = width // 2
     cy = height // 2
-    r = cx / 2
+    r = cx // 2
     for y in range(height):
         for x in range(width):
             if (
