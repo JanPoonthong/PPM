@@ -8,6 +8,12 @@ No dependencies. Output is done via [PPM images](http://netpbm.sourceforge.net/d
 $ python3 main.py
 ```
 
+## Viewing the PPM
+
+Linux/MacOS: [feh](https://feh.finalrewind.org/) and [gimp](https://www.gimp.org/).
+
+Windows: [gimp](https://www.gimp.org/) and Adobe photoshop.
+
 ## Screenshots
 
 Random patterns for testing render:
