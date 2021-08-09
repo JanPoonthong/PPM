@@ -19,10 +19,13 @@ def save_as_ppm(width, height, pixels: hex, file_name):
 def circle(width, height, pixels, foreground, background):
     cx = width // 2
     cy = height // 2
-    r = 100
+    r = cx / 2
     for y in range(height):
         for x in range(width):
-            if ((x - cx) * (x - cx) + (y - cy) * (y - cy)) <= r * r:
+            if (
+                (x + 0.5 - cx) * (x + 0.5 - cx)
+                + (y + 0.5 - cy) * (y + 0.5 - cy)
+            ) <= r * r:
                 pixels[y * width + x] = foreground
             else:
                 pixels[y * width + x] = background
@@ -88,8 +91,7 @@ def stripes_pattern(
 def main():
     width = 256
     height = 256
-    COLOR = 0x00FF00
-    pixels = [COLOR] * (width * height)
+    pixels = [bytes(0)] * width * height
     FOREGROUND = 0x634D84
     BACKGROUND = 0x000000
     checker_pattern(pixels, width, height, 10, FOREGROUND, BACKGROUND)
