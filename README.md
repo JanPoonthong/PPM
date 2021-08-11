@@ -24,6 +24,6 @@ Circles: Hollow and Filled:
 
 ![hollow](screenshots/hollow.png) ![circle](screenshots/circle.png)
 
-The Wee Wee:
+The Wee Wee by @strager:
 
 ![weewee](screenshots/wee_wee.png) ![weeweewithhead](screenshots/wee_wee_with_head.png)
