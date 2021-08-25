@@ -18,7 +18,7 @@ Windows: [gimp](https://www.gimp.org/) and Adobe photoshop.
 
 Random patterns for testing render:
 
-![checker](screenshots/checker.png) ![stripes](screenshots/stripes.png)
+![checker](screenshots/checker.png) ![stripes](screenshots/stripes.png) ![uv](screenshots/uv_gradient.png)
 
 Circles: Hollow and Filled:
 
