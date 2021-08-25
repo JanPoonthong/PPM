@@ -121,6 +121,17 @@ def stripes_pattern(
     save_as_ppm(width, height, pixels, "stripes")
 
 
+def uv_gradient_pattern(height, width, pixels):
+    for y in range(height):
+        for x in range(width):
+            u = x / width
+            v = y / height
+            r = int(u * 255)
+            g = int(v * 255)
+            pixels[y * width + x] = (r << 8 * 2) | (g << 8 * 1)
+    save_as_ppm(width, height, pixels, "uv_gradient")
+
+
 def main():
     width = 256
     height = 256
@@ -135,6 +146,7 @@ def main():
     wee_wee_with_head(width, height, pixels)
     four_dimensional(width, height, pixels)
     circle(width, height, pixels, foreground, background)
+    uv_gradient_pattern(height, width, pixels)
 
 
 main()
